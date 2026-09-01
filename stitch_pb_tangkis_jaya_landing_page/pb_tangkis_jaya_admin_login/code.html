@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PB Tangkis Jaya Admin - Login</title>
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config defined by the Design System -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#abc7ff",
+                        "secondary-container": "#d8e1ea",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-low": "#f3f4f5",
+                        "text-main": "#212529",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "surface-container-high": "#e7e8e9",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#5b646b",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "warning": "#ffc107",
+                        "on-primary-fixed-variant": "#284678",
+                        "primary": "#002451",
+                        "outline-variant": "#c4c6d0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-border": "#dee2e6",
+                        "success": "#28a745",
+                        "on-surface-variant": "#43474f",
+                        "on-primary-fixed": "#001b3f",
+                        "surface-dim": "#d9dadb",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#2e1500",
+                        "outline": "#747780",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#693c0a",
+                        "tertiary-fixed-dim": "#fcb87d",
+                        "primary-fixed": "#d7e2ff",
+                        "on-background": "#191c1d",
+                        "error": "#dc3545",
+                        "on-primary-container": "#89a5dd",
+                        "inverse-surface": "#2e3132",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#d7985f",
+                        "tertiary": "#3c1e00",
+                        "on-secondary-fixed-variant": "#3f484f",
+                        "secondary": "#575f67",
+                        "text-muted": "#6c757d",
+                        "secondary-fixed": "#dbe4ed",
+                        "secondary-fixed-dim": "#bfc8d0",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141d23",
+                        "tertiary-container": "#5b3000",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "primary-container": "#1a3a6b",
+                        "surface-tint": "#415e91"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "container-padding": "2rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle glow on focus for inputs as per style guidance */
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(0, 36, 81, 0.15); /* primary color with low opacity */
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center font-body-md text-on-background bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARiD0dJWnJu4Awm48h272-ZS00QGNQzpxzGgGcdWPL_tWYbwg1tan3MyGTkCe0wXx1fd5ZL3H3jqPnEpweInD32CYowjfJZ9dIvitXMTWoGaEb2bVKTQrf3ZYDeNzmCjsvdfijy3y7bnCxLjkj8539YBYOmwXKpDDgs5YV2pbjajyw55AzDoiFbuunIL1rp5fSvEHph_YRenkpOjuEFa2Q9jJqDAz0uR8Vl5XjOuYZIffTlQ2F2uUu');">
+<!-- Login Container -->
+<main class="w-full max-w-[420px] px-gutter mx-auto relative z-10">
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.12)] border border-surface-border overflow-hidden">
+<div class="p-container-padding flex flex-col items-center">
+<!-- Club Logo -->
+<div class="w-24 h-24 mb-stack-md flex items-center justify-center bg-surface-container-low rounded-full overflow-hidden border border-surface-border">
+<img alt="PB Tangkis Jaya Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U4I5ARp6R4iXzGHlT0yqg4_vZcQlagpkcLwxfa7GluDRwb1z8K17Hi4PhbQyl7hIj09dJ4xRiiWfcx9DABPhK2yhX6_lLvd5GOfy0uELvc7aBBEHgFnvdRQestO86oE23KYSyKRjI2oMi00J7cfLCFtL2S-O3keqf4gL7YUowsHe9WkISKt8uca_hBJx2ecn3xFYS7g-rCG7IwZ6-3hal_kqoDBdq6Ksb_azavHM2xeAGZoyM_H7ScCBY"/>
+</div>
+<!-- Heading -->
+<div class="text-center w-full mb-stack-lg">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">Admin Login</h1>
+<p class="font-body-md text-body-md text-text-muted">Secure access to PB Tangkis Jaya Management</p>
+</div>
+<!-- Login Form -->
+<form action="#" class="w-full space-y-stack-md" method="POST">
+<!-- Email Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="email">Email Staff</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+</div>
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-surface-border rounded focus:outline-none focus:border-primary input-glow text-on-surface font-body-md text-body-md transition-shadow" id="email" name="email" placeholder="admin@pbtangkis.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="password">Kata Sandi</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+</div>
+<input class="w-full pl-10 pr-10 py-2 bg-surface-container-lowest border border-surface-border rounded focus:outline-none focus:border-primary input-glow text-on-surface font-body-md text-body-md transition-shadow" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-muted hover:text-on-surface-variant focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center pt-2">
+<input class="h-4 w-4 text-primary focus:ring-primary border-surface-border rounded cursor-pointer" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block font-body-md text-body-md text-on-surface-variant cursor-pointer" for="remember-me">
+                            Remember me for 30 days
+                        </label>
+</div>
+<!-- Submit Button -->
+<div class="pt-stack-sm">
+<button class="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded bg-primary hover:bg-primary-container text-on-primary font-headline-md text-headline-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors" type="submit">
+                            Masuk
+                            <span class="material-symbols-outlined ml-2 text-[20px]" data-icon="login">login</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Footer Area -->
+<div class="bg-surface-container-low px-container-padding py-3 border-t border-surface-border text-center">
+<p class="font-label-sm text-label-sm text-text-muted">
+                    © 2024 PB Tangkis Jaya. Authorized access only.
+                </p>
+</div>
+</div>
+</main>
+<script>
+        // Simple script to toggle password visibility
+        document.addEventListener('DOMContentLoaded', () => {
+            const togglePasswordBtn = document.querySelector('button[type="button"]');
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = togglePasswordBtn.querySelector('span');
+
+            togglePasswordBtn.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle icon
+                if (type === 'password') {
+                    toggleIcon.textContent = 'visibility';
+                    toggleIcon.setAttribute('data-icon', 'visibility');
+                } else {
+                    toggleIcon.textContent = 'visibility_off';
+                    toggleIcon.setAttribute('data-icon', 'visibility_off');
+                }
+            });
+        });
+    </script>
+</body></html>

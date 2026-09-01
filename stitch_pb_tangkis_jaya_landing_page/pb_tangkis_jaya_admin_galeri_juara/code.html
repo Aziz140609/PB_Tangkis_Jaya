@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShuttleAdmin - Galeri Juara</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#abc7ff",
+                      "secondary-container": "#d8e1ea",
+                      "surface-variant": "#e1e3e4",
+                      "surface-container-low": "#f3f4f5",
+                      "text-main": "#212529",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#edeeef",
+                      "surface-container-high": "#e7e8e9",
+                      "surface": "#f8f9fa",
+                      "on-secondary-container": "#5b646b",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "warning": "#ffc107",
+                      "on-primary-fixed-variant": "#284678",
+                      "primary": "#002451",
+                      "outline-variant": "#c4c6d0",
+                      "surface-bright": "#f8f9fa",
+                      "on-error-container": "#93000a",
+                      "surface-border": "#dee2e6",
+                      "success": "#28a745",
+                      "on-surface-variant": "#43474f",
+                      "on-primary-fixed": "#001b3f",
+                      "surface-dim": "#d9dadb",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1d",
+                      "on-tertiary-fixed": "#2e1500",
+                      "outline": "#747780",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-fixed-variant": "#693c0a",
+                      "tertiary-fixed-dim": "#fcb87d",
+                      "primary-fixed": "#d7e2ff",
+                      "on-background": "#191c1d",
+                      "error": "#dc3545",
+                      "on-primary-container": "#89a5dd",
+                      "inverse-surface": "#2e3132",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#d7985f",
+                      "tertiary": "#3c1e00",
+                      "on-secondary-fixed-variant": "#3f484f",
+                      "secondary": "#575f67",
+                      "text-muted": "#6c757d",
+                      "secondary-fixed": "#dbe4ed",
+                      "secondary-fixed-dim": "#bfc8d0",
+                      "background": "#f8f9fa",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#141d23",
+                      "tertiary-container": "#5b3000",
+                      "inverse-primary": "#abc7ff",
+                      "tertiary-fixed": "#ffdcc1",
+                      "primary-container": "#1a3a6b",
+                      "surface-tint": "#415e91"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "260px",
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1rem",
+                      "container-padding": "2rem",
+                      "gutter": "1.5rem",
+                      "stack-lg": "1.5rem"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-xl": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        [data-weight="fill"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f8f9fa; }
+        ::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c4c6d0; }
+        
+        .gallery-card:hover .delete-btn { opacity: 1; transform: translateY(0); }
+        .delete-btn { opacity: 0; transform: translateY(-10px); transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary dark:bg-on-primary-fixed flex flex-col z-20">
+<!-- Brand Header -->
+<div class="h-16 flex items-center px-6 border-b border-white/10 shrink-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary-fixed truncate">ShuttleAdmin</span>
+<span class="font-label-md text-label-md text-primary-fixed-dim/70 truncate">Badminton Club CMS</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto py-4 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="event">event</span>
+<span class="font-body-md text-body-md">Turnamen &amp; Event</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-fixed border-l-4 border-primary-fixed-dim rounded-r-lg group" href="#">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="military_tech" data-weight="fill">military_tech</span>
+<span class="font-body-md text-body-md font-medium text-primary-fixed">Galeri Juara</span>
+</a>
+</nav>
+<!-- Footer Actions -->
+<div class="p-4 mt-auto border-t border-white/10">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-gutter bg-surface dark:bg-inverse-surface border-b border-surface-border dark:border-outline-variant shrink-0 z-10">
+<!-- Left: Page Title -->
+<div class="flex items-center">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-bold tracking-tight">Galeri Juara</h1>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-text-muted hover:bg-surface-container-low hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-text-muted hover:bg-surface-container-low hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-surface-border mx-2"></div>
+<button class="flex items-center gap-2 hover:bg-surface-container-low p-1.5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
+<img class="w-8 h-8 rounded-full object-cover border border-surface-border" data-alt="A small circular profile picture of a professional admin user in a clean, brightly lit office environment, high resolution, soft lighting, professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvbZO7eoX2OLXoOq1uTrAcQWC9-mp-YrkpizO6O05YaLd3pE6YDsjxofwuApQ51dIwaKpFE0PbWc_gjoBODHmIPtS1rdWuHmKZIgFFxMmheyt6jSn4JaELTcYSk6Jk26wQURSH9sgknrfcER8vyGEsRodFp2ygKUTsG092mfMQEzGKHPKfHRidzvQM5sc0XqgDrzy1hBezukX3d26NTRmwGXqIV_bhlnmx0qcXvl_vGioQ3azk8FWw"/>
+<span class="material-symbols-outlined text-text-muted text-[20px]" data-icon="arrow_drop_down">arrow_drop_down</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-container-padding">
+<div class="max-w-7xl mx-auto flex flex-col gap-stack-lg">
+<!-- Action Bar -->
+<div class="flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-text-muted">Kelola dokumentasi kemenangan dan prestasi club.</span>
+</div>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2.5 rounded-lg hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface font-label-md text-label-md shadow-sm active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                        Tambah Foto
+                    </button>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Item 1 -->
+<div class="gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-border shadow-sm hover:shadow-md transition-shadow aspect-square flex flex-col">
+<div class="relative flex-1 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A high-quality action shot of a badminton player smashing the shuttlecock during a tournament match. Vibrant lighting, indoor stadium, sharp focus on the player, motion blur on the racket. Professional sports photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrRX1DsdB-P8-kWZ8lWWswcr1Fo77TB36SAfbdIclWwMK5Q7Qa7m2Gc3HP4HmpcEAUorRHcYSpY9kzWgO8dRemylO860j0mYBEicHfVATG5pnlZCtepCCT223ZNwGPVG3RmXxbd5vCsBOKDyNPysxscqutdLfGCLK-jiJgsrP6SDDYVNgByf078CUJ4bM_qq7DbpZQJ6lzb6K3Ko9ys1mp6K9w9Ax0GG7V5pG5S3RFXV570RdKVHrJ"/>
+<!-- Overlay Gradient for better text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
+<!-- Delete Button -->
+<button class="delete-btn absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full text-error hover:bg-error hover:text-on-error shadow-sm focus:outline-none">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+<!-- Caption Overlay -->
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="font-headline-md text-headline-md text-on-primary drop-shadow-md truncate">Juara 1 Solo Open</h3>
+<p class="font-label-sm text-label-sm text-on-primary/80 mt-1">24 Nov 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-border shadow-sm hover:shadow-md transition-shadow aspect-square flex flex-col">
+<div class="relative flex-1 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A group photo of a badminton team standing on a podium holding a large trophy. Smiling faces, gold medals around their necks, indoor sports arena background with bright stadium lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKIDBgPDtqahD85s9AIKXquTkgHy9RvHxrtPnQ9LMyWe6kcsWaAgIHhMoWtLsDbBPmKr5gjqIDdXBMGSBrkRpiVSuq533mVtaF3RuMtrYKwaUutqfJwDoM49UcqS04rVfm6fwYTsRppiHKs2FNGDPSDW8wQA75AI2EUZCFtWg_IQ1WsHPlQo-Jk57PY-f8zH6WLqbiJAnMJv5wFkZuFQ8oqo1jFeCKuxnY0CICnO6bGvkapKZBSTSp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
+<button class="delete-btn absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full text-error hover:bg-error hover:text-on-error shadow-sm focus:outline-none">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="font-headline-md text-headline-md text-on-primary drop-shadow-md truncate">Kejuaraan Provinsi</h3>
+<p class="font-label-sm text-label-sm text-on-primary/80 mt-1">12 Okt 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-border shadow-sm hover:shadow-md transition-shadow aspect-square flex flex-col">
+<div class="relative flex-1 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A close-up shot of a gold badminton medal resting on a wooden surface next to a shuttlecock. Shallow depth of field, warm lighting, elegant and victorious mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBlEiOdnbQpEZ5CVvlc9XY2-oiLWfng6082QfDvWP_HvURsnR25JRntfn-4HjvKVZJYAOk0OguW2jgvr-QDI9_1HBY42ym7-P9Is_zssTtK-giOGbWWcRn4g_U-IauRUONwH8zQpJbTiJavnGygfIgMTEqNf7YagTV89ZEYSgYPb7577G0yUpR3tS2FuZyCpf259_OszhisoS5T5URbet7qukbPiv23Ige12HCP2fBzQW8kUP5_W2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
+<button class="delete-btn absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full text-error hover:bg-error hover:text-on-error shadow-sm focus:outline-none">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="font-headline-md text-headline-md text-on-primary drop-shadow-md truncate">Medali Emas Ganda Putra</h3>
+<p class="font-label-sm text-label-sm text-on-primary/80 mt-1">05 Sep 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 4 (Empty State Placeholder / Upload Box) -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary-fixed-dim/20 transition-colors aspect-square flex flex-col items-center justify-center cursor-pointer">
+<div class="flex flex-col items-center text-text-muted group-hover:text-primary transition-colors p-6 text-center">
+<span class="material-symbols-outlined text-[48px] mb-4 opacity-50 group-hover:opacity-100 transition-opacity" data-icon="add_photo_alternate">add_photo_alternate</span>
+<span class="font-headline-md text-headline-md font-medium">Unggah Foto Baru</span>
+<span class="font-label-md text-label-md mt-2 opacity-70">Drag &amp; drop atau klik disini</span>
+</div>
+</div>
+</div>
+<!-- Pagination (Optional, for realistic UI) -->
+<div class="flex items-center justify-between border-t border-surface-border pt-4 mt-4">
+<span class="font-body-md text-body-md text-text-muted">Menampilkan 1-3 dari 3 foto</span>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded border border-surface-border text-text-muted bg-surface-container-lowest opacity-50 cursor-not-allowed">Previous</button>
+<button class="px-3 py-1.5 rounded border border-surface-border text-text-muted bg-surface-container-lowest hover:bg-surface-container-low">Next</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Success Toast Notification -->
+<div class="fixed bottom-6 right-6 bg-surface-container-lowest border border-success/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg p-4 flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50" id="toast">
+<div class="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-success text-[18px]" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">Berhasil</span>
+<span class="font-body-md text-body-md text-text-muted">Foto berhasil disimpan!</span>
+</div>
+<button class="ml-4 text-text-muted hover:text-on-surface focus:outline-none" onclick="hideToast()">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<script>
+        // Simple toast animation logic
+        const toast = document.getElementById('toast');
+        
+        function showToast() {
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Auto hide after 3 seconds
+            setTimeout(hideToast, 3000);
+        }
+        
+        function hideToast() {
+            toast.classList.add('translate-y-20', 'opacity-0');
+        }
+
+        // Trigger toast on load for demonstration based on prompt
+        window.addEventListener('load', () => {
+            setTimeout(showToast, 500);
+        });
+    </script>
+</body></html>

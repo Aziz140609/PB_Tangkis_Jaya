@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tambah Turnamen - ShuttleAdmin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#abc7ff",
+                        "secondary-container": "#d8e1ea",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-low": "#f3f4f5",
+                        "text-main": "#212529",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "surface-container-high": "#e7e8e9",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#5b646b",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "warning": "#ffc107",
+                        "on-primary-fixed-variant": "#284678",
+                        "primary": "#002451",
+                        "outline-variant": "#c4c6d0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-border": "#dee2e6",
+                        "success": "#28a745",
+                        "on-surface-variant": "#43474f",
+                        "on-primary-fixed": "#001b3f",
+                        "surface-dim": "#d9dadb",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#2e1500",
+                        "outline": "#747780",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#693c0a",
+                        "tertiary-fixed-dim": "#fcb87d",
+                        "primary-fixed": "#d7e2ff",
+                        "on-background": "#191c1d",
+                        "error": "#dc3545",
+                        "on-primary-container": "#89a5dd",
+                        "inverse-surface": "#2e3132",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#d7985f",
+                        "tertiary": "#3c1e00",
+                        "on-secondary-fixed-variant": "#3f484f",
+                        "secondary": "#575f67",
+                        "text-muted": "#6c757d",
+                        "secondary-fixed": "#dbe4ed",
+                        "secondary-fixed-dim": "#bfc8d0",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141d23",
+                        "tertiary-container": "#5b3000",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "primary-container": "#1a3a6b",
+                        "surface-tint": "#415e91"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "container-padding": "2rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-hidden flex h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary dark:bg-on-primary-fixed flex flex-col z-20 shadow-[4px_0_12px_rgba(0,0,0,0.05)]">
+<!-- Header -->
+<div class="p-6 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed">sports_tennis</span>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md text-primary-fixed">ShuttleAdmin</h1>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim opacity-80">Badminton Club CMS</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Turnamen & Event (Active Semantic Match) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-fixed border-l-4 border-primary-fixed-dim rounded-r-lg hover:bg-primary-container hover:opacity-100 transition-colors opacity-100 scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-md text-label-md">Turnamen &amp; Event</span>
+</a>
+<!-- Galeri Juara (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-md text-label-md">Galeri Juara</span>
+</a>
+</nav>
+<!-- Footer / Logout -->
+<div class="p-4 mt-auto border-t border-primary-container">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 rounded-lg hover:bg-primary-container hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-gutter bg-surface dark:bg-inverse-surface border-b border-surface-border dark:border-outline-variant z-10 sticky top-0 w-full shrink-0">
+<div class="flex items-center">
+<span class="text-headline-md font-headline-md text-on-surface">Dashboard</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden shrink-0 border border-surface-border cursor-pointer">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A clean, professional headshot of an administrative user in a brightly lit modern office environment, high resolution, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_LABsXKB_mYxJwvRhzFCZyzfEcvcAwU5vF8NuLIOh96onfo6VKDLN5fmJr-MzhNTUfBrtnL81LnMpNZVSz8qnppDsDHjgEhIA3rm7yRTlY2MrtUFrX5oKSOZoMz7Semap1HyZrT3USp94SwjkQigeQnuP8_U9nW73StvkG5gCjf8nxBfVGaPNBIFzxSW0VEK1y2Q9t2Rs4LPQEuqZOiXvudTeXYlMSuIu8_RQ3M13-1afNZlaH0zu"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Page Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface p-container-padding">
+<div class="max-w-5xl mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-headline-xl text-headline-xl text-text-main mb-2">Tambah Turnamen</h2>
+<p class="text-text-muted font-body-md text-body-md">Buat entri turnamen baru untuk jadwal klub PB Tangkis Jaya.</p>
+</div>
+<!-- Main Form Card (Bento-style layout) -->
+<div class="bg-surface-container-lowest border border-surface-border rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+<!-- Left Column: Input Fields -->
+<div class="lg:col-span-7 p-8 border-b lg:border-b-0 lg:border-r border-surface-border flex flex-col gap-6">
+<!-- Field: Judul -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="judul">Judul Turnamen</label>
+<input class="w-full px-4 py-3 rounded-lg border border-surface-border bg-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-text-main placeholder:text-outline-variant" id="judul" placeholder="Contoh: PB Tangkis Jaya Open 2024" type="text"/>
+</div>
+<!-- Field: Tanggal -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="tanggal">Tanggal Pelaksanaan</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-surface-border bg-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-text-main appearance-none" id="tanggal" type="date"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">calendar_month</span>
+</div>
+</div>
+<!-- Field: Ketentuan -->
+<div class="flex flex-col gap-2 flex-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="ketentuan">Ketentuan &amp; Peraturan</label>
+<textarea class="w-full h-full min-h-[160px] px-4 py-3 rounded-lg border border-surface-border bg-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-text-main resize-y placeholder:text-outline-variant" id="ketentuan" placeholder="Masukkan syarat pendaftaran, sistem pertandingan, dll..."></textarea>
+</div>
+</div>
+<!-- Right Column: Poster Upload -->
+<div class="lg:col-span-5 p-8 bg-surface-container-low flex flex-col items-center justify-center">
+<div class="w-full max-w-[280px]">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-3 block text-center">Upload Poster</label>
+<div class="relative group cursor-pointer aspect-[3/4] w-full rounded-xl border-2 border-dashed border-outline-variant hover:border-primary transition-colors bg-surface-container-lowest overflow-hidden flex flex-col items-center justify-center">
+<!-- Placeholder Image Preview -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" data-alt="A professional and modern digital poster for a badminton tournament, featuring abstract geometric shuttlecock shapes and dynamic motion lines. The design utilizes a sophisticated palette of deep navy blue, pristine white, and vibrant energetic accents. The mood is sporty, competitive, and premium, fitting for a high-end club administration dashboard. The lighting is studio-quality and clean." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhJCguZlIvmH-UWOxU2IVLfherRiozbSmJLZH3nuufVNxn5M1e88XWn0d0sb2W2tKqWx09hEHW3AoVuNa48bPZ185HdP55WROnFCP_nztBMQgGUoDnmkgfjXTyBbUNUmy2ammjdsx2M--YuvOv-WSjAv6PwjmIdO4YwI9RYGddniWQvYsp0jay0tNfRGgjGuKcX2VZkiNLHb2XtY46t9S38MZAJcvnitcc7HFd3DsunXNL8tht4lbm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<!-- Upload UI -->
+<div class="relative z-10 flex flex-col items-center text-center p-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary-fixed flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary drop-shadow-sm">Ganti Poster</p>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">PNG, JPG up to 5MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="px-8 py-5 border-t border-surface-border bg-surface-container-lowest flex items-center justify-end gap-3">
+<button class="px-6 py-2.5 rounded-lg border border-outline text-text-main font-label-md text-label-md hover:bg-surface-container-low transition-colors" type="button">
+                            Batal
+                        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-on-primary-fixed transition-colors shadow-sm" type="button">
+                            Simpan Turnamen
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

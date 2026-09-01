@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - PB Tangkis Jaya</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#abc7ff",
+                        "secondary-container": "#d8e1ea",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-low": "#f3f4f5",
+                        "text-main": "#212529",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "surface-container-high": "#e7e8e9",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#5b646b",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "warning": "#ffc107",
+                        "on-primary-fixed-variant": "#284678",
+                        "primary": "#002451",
+                        "outline-variant": "#c4c6d0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-border": "#dee2e6",
+                        "success": "#28a745",
+                        "on-surface-variant": "#43474f",
+                        "on-primary-fixed": "#001b3f",
+                        "surface-dim": "#d9dadb",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#2e1500",
+                        "outline": "#747780",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#693c0a",
+                        "tertiary-fixed-dim": "#fcb87d",
+                        "primary-fixed": "#d7e2ff",
+                        "on-background": "#191c1d",
+                        "error": "#dc3545",
+                        "on-primary-container": "#89a5dd",
+                        "inverse-surface": "#2e3132",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#d7985f",
+                        "tertiary": "#3c1e00",
+                        "on-secondary-fixed-variant": "#3f484f",
+                        "secondary": "#575f67",
+                        "text-muted": "#6c757d",
+                        "secondary-fixed": "#dbe4ed",
+                        "secondary-fixed-dim": "#bfc8d0",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141d23",
+                        "tertiary-container": "#5b3000",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "primary-container": "#1a3a6b",
+                        "surface-tint": "#415e91"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "container-padding": "2rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex font-body-md">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary dark:bg-on-primary-fixed flex flex-col z-20">
+<!-- Header / Logo -->
+<div class="flex items-center gap-3 px-6 py-8">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0">
+<img alt="Badminton Club Logo" class="w-6 h-6 object-contain" data-alt="A minimalist, highly stylized badminton shuttlecock icon in deep navy blue set against a pristine white background, conveying a professional and athletic club identity. Clean lines, vector-style flat design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKC2914KWVoAxrrcGXkkH1MVGnw8KVWFDrjoUtoLCaSm3yDkPzBkrstRdBlrIpnTL8Z_oUAkdT86r3XB4bm1JDnGDH0r5fK-P9KeI-WO4Tob7V1k4_0s4BPAJXTbFmHB8SBCPmnFd744tCUyBm1eLeAWI24Ma6Te9Pc8kklzlfaoVEmfxyQiAcelp11XKG6bNugECPdFoDClssGe7mv-Yd-GCQoxsY4Xp1vLPK-yaTQDdtj5FpaZqT"/>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-lg font-headline-lg text-primary-fixed">ShuttleAdmin</span>
+<span class="text-label-sm font-label-sm text-primary-fixed-dim opacity-70">Badminton Club CMS</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col flex-1 px-2 gap-1 mt-4">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-fixed border-l-4 border-primary-fixed-dim rounded-r-lg opacity-100 scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md font-medium">Dashboard</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors rounded-r-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-body-md text-body-md">Turnamen &amp; Event</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors rounded-r-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-body-md text-body-md">Galeri Juara</span>
+</a>
+</nav>
+<!-- Logout Tab -->
+<div class="mt-auto px-2 pb-6">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col ml-[260px] w-[calc(100%-260px)] min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-10 flex justify-between items-center h-16 px-gutter ml-[260px] w-[calc(100%-260px)] bg-surface dark:bg-inverse-surface border-b border-surface-border dark:border-outline-variant">
+<!-- Product Name -->
+<div class="flex items-center">
+<h1 class="text-headline-md font-headline-md text-on-surface">Dashboard</h1>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-surface-border ml-2 shrink-0">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young administrator in a well-lit office setting. Neutral background, soft studio lighting, professional attire, conveying reliability and competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKCLhkZMYZIa2FjkbirMFxMnH44I7XnvE73UcufE3uLS7WIT7d7uZPkWHggGebSWg75U5NI9ZmJIUxR2-hZ_OEwPS_NaEIVcSNTFAZEKUNSifPZlkW8zwbV3QBV9AYEZDiGsX7hcOJ9d837mHokQnky-5ycRCaXKwAXXs2KxcLclwtW33HNk32KpfhT0fcBwixoIPTu9rHQTkZn769flgmK09Z3X4_kuJz-qggPi0CAfV2WGnj9XdS"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-16 p-container-padding bg-surface">
+<!-- Welcome Section -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-text-main">Selamat Datang, Admin!</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Berikut adalah ringkasan aktivitas PB Tangkis Jaya hari ini.</p>
+</div>
+<!-- Summary Cards Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-border rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">emoji_events</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant">Aktif</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1">Total Turnamen Aktif</p>
+<p class="font-headline-xl text-[36px] font-bold text-text-main leading-none">3</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-border rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed/40 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[28px]">photo_library</span>
+</div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1">Total Foto Galeri</p>
+<p class="font-headline-xl text-[36px] font-bold text-text-main leading-none">24</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-border rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-success">
+<span class="material-symbols-outlined text-[28px]">person_add</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm text-success bg-green-50">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +2 dari kemarin
+                        </span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1">Pendaftaran Baru (Hari Ini)</p>
+<p class="font-headline-xl text-[36px] font-bold text-text-main leading-none">5</p>
+</div>
+</div>
+</div>
+<!-- Lower Section: Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Activity Feed -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-surface-border rounded-xl flex flex-col overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-border bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-text-main">Aktivitas Terbaru</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Lihat Semua</button>
+</div>
+<div class="p-0 flex-1">
+<ul class="divide-y divide-surface-border">
+<li class="flex items-start gap-4 p-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim/20 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-text-main"><span class="font-semibold">Budi Santoso</span> mendaftar sebagai anggota baru.</p>
+<p class="font-label-sm text-label-sm text-text-muted mt-1">10 menit yang lalu</p>
+</div>
+</li>
+<li class="flex items-start gap-4 p-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/40 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-tertiary-container text-sm">photo_camera</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-text-main">Admin menambahkan 12 foto baru ke album <span class="font-semibold">Kejuaraan Kota 2023</span>.</p>
+<p class="font-label-sm text-label-sm text-text-muted mt-1">2 jam yang lalu</p>
+</div>
+</li>
+<li class="flex items-start gap-4 p-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">edit_calendar</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-text-main">Jadwal latihan <span class="font-semibold">Tim Inti</span> diperbarui untuk minggu depan.</p>
+<p class="font-label-sm text-label-sm text-text-muted mt-1">Kemarin, 15:30</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="bg-surface-container-lowest border border-surface-border rounded-xl flex flex-col overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-border bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-text-main">Aksi Cepat</h3>
+</div>
+<div class="p-6 flex flex-col gap-3">
+<button class="w-full flex items-center justify-between px-4 py-3 bg-primary text-on-primary rounded-lg hover:bg-on-primary-fixed-variant transition-colors duration-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="font-body-md text-body-md font-medium">Buat Turnamen Baru</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-text-main rounded-lg hover:bg-surface-container-highest border border-transparent transition-colors duration-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-secondary">upload_file</span>
+<span class="font-body-md text-body-md font-medium">Unggah Foto Galeri</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-secondary">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-text-main rounded-lg hover:bg-surface-container-highest border border-transparent transition-colors duration-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-secondary">group</span>
+<span class="font-body-md text-body-md font-medium">Kelola Anggota</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

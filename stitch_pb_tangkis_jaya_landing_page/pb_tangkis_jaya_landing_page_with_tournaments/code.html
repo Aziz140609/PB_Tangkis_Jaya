@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PB TANGKIS JAYA - Badminton Club Surakarta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#002451",
+                      "surface-container-low": "#f3f4f5",
+                      "on-secondary-fixed": "#410007",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "outline": "#747780",
+                      "primary-fixed": "#d7e2ff",
+                      "surface-tint": "#415e91",
+                      "on-tertiary-container": "#4e3d00",
+                      "tertiary-container": "#cba72f",
+                      "outline-variant": "#c4c6d0",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed-variant": "#284678",
+                      "inverse-primary": "#abc7ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-tertiary-fixed": "#241a00",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed": "#ffe088",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#fffbff",
+                      "on-primary-container": "#89a5dd",
+                      "primary-container": "#1a3a6b",
+                      "inverse-surface": "#2e3132",
+                      "on-surface": "#191c1d",
+                      "on-background": "#191c1d",
+                      "on-surface-variant": "#43474f",
+                      "surface-container": "#edeeef",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#db313f",
+                      "on-primary-fixed": "#001b3f",
+                      "on-secondary-fixed-variant": "#92001c",
+                      "surface": "#f8f9fa",
+                      "surface-variant": "#e1e3e4",
+                      "surface-dim": "#d9dadb",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#735c00",
+                      "primary-fixed-dim": "#abc7ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#b7102a",
+                      "secondary-fixed": "#ffdad8",
+                      "secondary-fixed-dim": "#ffb3b1",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#574500"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "diagonal-offset": "4vw",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Barlow Condensed"
+                      ],
+                      "label-md": [
+                              "Barlow Condensed"
+                      ],
+                      "display-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .clip-diagonal {
+            clip-path: polygon(0 4vw, 100% 0, 100% calc(100% - 4vw), 0 100%);
+        }
+        .clip-diagonal-top {
+            clip-path: polygon(0 4vw, 100% 0, 100% 100%, 0 100%);
+        }
+        .clip-diagonal-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
+        }
+        .counter-skew {
+            /* padding adjustment to offset the clip path visually */
+            padding-top: calc(4vw + 2rem);
+            padding-bottom: calc(4vw + 2rem);
+        }
+        .text-shadow-heavy {
+            text-shadow: 4px 4px 0px rgba(0, 36, 81, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar component generated from JSON -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b-2 border-primary dark:border-primary-fixed shadow-[4px_4px_0px_0px_rgba(0,36,81,1)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-xl text-headline-xl italic text-primary dark:text-inverse-primary uppercase tracking-tighter">
+                PB TANGKIS JAYA
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface dark:text-surface-variant font-label-md text-label-md uppercase hover:text-secondary transition-colors duration-200" href="#training">Training</a>
+<a class="text-on-surface dark:text-surface-variant font-label-md text-label-md uppercase hover:text-secondary transition-colors duration-200" href="#coaches">Coaches</a>
+<a class="text-on-surface dark:text-surface-variant font-label-md text-label-md uppercase hover:text-secondary transition-colors duration-200" href="#schedules">Schedules</a>
+<a class="text-secondary font-bold border-b-4 border-secondary pb-1 font-label-md text-label-md uppercase hover:text-secondary transition-colors duration-200" href="#registration">Registration</a>
+</nav>
+<a class="hidden md:inline-flex bg-primary text-on-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-primary-container active:translate-x-1 active:translate-y-1 active:shadow-none transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" href="#registration">
+                Join Now
+            </a>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-[88px]"> <!-- Offset for fixed header -->
+<!-- 1. Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden clip-diagonal-bottom">
+<div class="absolute inset-0 z-0">
+<img alt="" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Q34_UYMiwqkkSYKSM9NnGwTYl6_DAhvDA96dE3Ys1rttTDPeg7Ci7uF2pPil-GM8xF-WHEdQg2GBI8BbzclQ0nh2MvJiVRu1IfzR8Mgjzk5Rls1FnU_7PQ45eXLLWcIpYcXKjheIijmP1coLDWpqpD9uq3SmwZ5g9ffaDN-yMP7A7HYjN8GG57LstDg24pzsBo9MNu-YkFlLfZCFXKdx4QSkI77ujCTr9G7k4UhXGIv6cWzOOWXZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 text-center flex flex-col items-center px-4 max-w-container-max mx-auto counter-skew">
+<div class="bg-surface rounded-full p-4 shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] mb-8 transform -rotate-2">
+<img alt="" class="w-32 h-32 md:w-48 md:h-48 rounded-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALgpkWCDA40e1hQHT2r3SfXvlIJQTy1he7N4uaJS9bgIhVznolZbDPs0lqJP4-647AX1irrLTsVrJC70Q2e-TkAPWVhzXj0iMjaDym1phbGV-oLReJQzFNi9MEmm2MZNkYdqmBQiVT1K5r4mJCAxFyPdAE2dwSOnHdn68XgRUUym8jS4N20F6VmKAPI7djk7WShgb5T09FR9RG6G2JkAplf50SPMqqJ40r4_WhlXkLkZthvNm7ltki"/>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-primary uppercase italic text-shadow-heavy mb-2 transform -skew-x-6">
+                    PB TANGKIS JAYA
+                </h1>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary-fixed mb-8 uppercase tracking-wide bg-primary px-4 py-1 inline-block -skew-x-6 shadow-[4px_4px_0px_0px_rgba(219,49,63,1)]">
+                    Membangun Juara dari Surakarta
+                </p>
+<a class="bg-secondary text-on-primary font-headline-lg text-headline-lg-mobile md:text-headline-lg px-8 py-4 rounded-full uppercase tracking-wider shadow-[0px_4px_0px_0px_rgba(146,0,28,1)] hover:bg-secondary-container transition-all hover:translate-y-1 hover:shadow-none inline-flex items-center gap-2" href="#registration">
+                    Daftar Sekarang
+                    <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 2. Tentang Kami -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1 relative">
+<div class="w-full aspect-square bg-surface-container-high rounded-xl overflow-hidden relative border-4 border-primary shadow-[8px_8px_0px_0px_rgba(0,36,81,1)]">
+<div class="bg-cover bg-center w-full h-full" data-alt="A dynamic action shot of a young badminton player smashing a shuttlecock in a brightly lit, professional indoor court in Surakarta. High energy, dramatic lighting casting hard shadows, sports photography style. The colors are vibrant, highlighting the fast-paced nature of the sport and the determination on the player's face." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHjaE9AoS3UKdpOUm-6T3Aus9Q2HhuFue91zpA_vjiq13EwZu2S-JiTNprewPhAAzwGoZjNSe7YZ1Qfjvr1Qs21QwFBnx2OpseItdl-c72Rh-c1CqAkqmNU1BgrDBhSf0yNqyfdw3ZdilcAZXoTy7iRxPtyRk9HlEFgr0FwhWOfllt74oljoe97i38l2IK8JVJsyD3xjaO1TNNGbP2jcsZAr6NUsti0P4r98oCVxlSAmL-NwxC3b5e')"></div>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-tertiary-container text-on-tertiary-container font-headline-xl p-6 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transform rotate-12">
+<span class="material-symbols-outlined text-6xl">emoji_events</span>
+</div>
+</div>
+<div class="order-1 md:order-2 flex flex-col items-start space-y-6">
+<div class="inline-flex items-center gap-2 text-secondary font-label-md text-label-md uppercase tracking-widest border-b-2 border-secondary pb-1">
+<span class="material-symbols-outlined">info</span>
+                        Tentang Kami
+                    </div>
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase leading-tight">
+                        Melatih Calon Juara <br/><span class="text-secondary italic">di Jantung Kota Solo</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Berdiri dengan semangat untuk memajukan olahraga bulutangkis di Surakarta, PB Tangkis Jaya mendedikasikan diri untuk membina talenta muda menjadi atlet berprestasi. Dengan pelatih profesional dan fasilitas berkualitas, kami berkomitmen mencetak generasi juara berikutnya.
+                    </p>
+</div>
+</div>
+</section>
+<!-- 3. Program/Level -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low clip-diagonal relative">
+<div class="max-w-container-max mx-auto counter-skew">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                    Program Latihan
+                </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Basic -->
+<div class="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">sports_gymnastics</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-2">Basic</h3>
+<p class="font-body-md text-on-surface-variant">Pengenalan dasar bulutangkis, teknik pegangan raket, dan langkah dasar.</p>
+</div>
+<!-- Beginner -->
+<div class="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
+<div class="w-16 h-16 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">fitness_center</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-2">Beginner</h3>
+<p class="font-body-md text-on-surface-variant">Fokus pada teknik pukulan dasar, servis, dan pengenalan taktik permainan.</p>
+</div>
+<!-- Intermediate -->
+<div class="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
+<div class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">sports_score</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-2">Intermediate</h3>
+<p class="font-body-md text-on-surface-variant">Pengembangan fisik, variasi pukulan, dan strategi pertandingan.</p>
+</div>
+<!-- Advance -->
+<div class="bg-primary text-on-primary p-8 rounded-xl border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(183,16,42,1)] transform hover:-translate-y-2 transition-transform">
+<div class="w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">workspace_premium</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-secondary-fixed uppercase mb-2">Advance</h3>
+<p class="font-body-md text-primary-fixed-dim">Persiapan turnamen, simulasi pertandingan, dan program latihan intensif atlet.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Lokasi & Jadwal -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                Lokasi &amp; Jadwal
+            </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Sritex Sriwedari -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary uppercase">Sritex Sriwedari</h3>
+<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+                    Jl. Kebangkitan Nasional, Sriwedari, Surakarta
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Senin &amp; Rabu</span>
+<span class="font-body-md text-on-surface-variant">15:00 - 18:00</span>
+</div>
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Jumat</span>
+<span class="font-body-md text-on-surface-variant">14:00 - 17:00</span>
+</div>
+</div>
+</div>
+<!-- Hapsari Mojosongo -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary uppercase">Hapsari Mojosongo</h3>
+<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+                    Jl. Brigjen Katamso, Mojosongo, Surakarta
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Selasa &amp; Kamis</span>
+<span class="font-body-md text-on-surface-variant">16:00 - 19:00</span>
+</div>
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Sabtu</span>
+<span class="font-body-md text-on-surface-variant">08:00 - 11:00</span>
+</div>
+</div>
+</div>
+<!-- HTC Solobaru -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary uppercase">HTC Solobaru</h3>
+<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+                    Hartono Trade Center, Solo Baru
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Senin &amp; Kamis</span>
+<span class="font-body-md text-on-surface-variant">18:00 - 21:00</span>
+</div>
+</div>
+</div>
+<!-- SCS Pabelan -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary uppercase">SCS Pabelan</h3>
+<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+                    Pabelan, Kartasura
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Rabu &amp; Jumat</span>
+<span class="font-body-md text-on-surface-variant">16:00 - 19:00</span>
+</div>
+</div>
+</div>
+<!-- Blulukan Colomadu -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary uppercase">Blulukan Colomadu</h3>
+<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+                    Jl. Adi Sucipto, Colomadu
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold">Selasa &amp; Sabtu</span>
+<span class="font-body-md text-on-surface-variant">15:00 - 18:00</span>
+</div>
+</div>
+</div>
+<!-- Berma Pajang (FULL) -->
+<div class="bg-surface-container p-6 rounded-xl border border-error opacity-75 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-4 right-[-30px] bg-error text-on-error font-bold text-xs py-1 px-8 transform rotate-45">
+                FULL
+            </div>
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface-variant uppercase">Berma Pajang</h3>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mt-1">location_on</span>
+                    Pajang, Laweyan, Surakarta
+                </p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between border-t border-outline-variant pt-2">
+<span class="font-body-md font-semibold text-on-surface-variant">Senin - Jumat</span>
+<span class="font-body-md text-on-surface-variant">15:00 - 20:00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW: Turnamen & Event Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+            Turnamen &amp; Event
+        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="bg-surface rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] overflow-hidden flex flex-col">
+<img alt="Solo Open 2024 Poster" class="w-full object-cover h-64 border-b-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg_9CdGs44Gubne9dPChsp7Gzt-vZSe2yh-bZXiYxOLXJd1Xt9XhhNnKKQXAzzMP78DO5Evht--PJNM9aidVMS6VTg4ef_v63Hl1OSnkwfXqSexdtuSa68nAltdD6xAijb1iJggoVtMc0nlmg--5KaSEZ69MFdJ87dagUmjLlrOeyYJRMVKKRdBLLKt4XTIaECVGuJjZYIHCdFc7dpN66GKpLvMxsjtGETx8NTS4dV_AjPqITtxLaq"/>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-2">Solo Open 2024</h3>
+<p class="font-body-md text-secondary font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                    25 - 27 Oktober 2024
+                </p>
+<div class="mt-auto">
+<details class="group">
+<summary class="flex justify-between items-center font-label-md text-primary uppercase cursor-pointer bg-surface-container-high p-3 rounded-md hover:bg-surface-variant transition-colors">
+<span>Lihat Ketentuan</span>
+<span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-3 bg-surface-container-low text-on-surface-variant font-body-md text-sm rounded-b-md mt-1 border border-outline-variant border-t-0 space-y-2">
+<p><strong>Kategori:</strong> Tunggal Putra/Putri, Ganda Campuran.</p>
+<p><strong>Biaya Pendaftaran:</strong> Rp 150.000.</p>
+<p><strong>Persyaratan:</strong> KTP/Kartu Pelajar.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+<!-- Add more cards here if needed -->
+</div>
+</section>
+<!-- 5. Galeri -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low clip-diagonal relative">
+<div class="max-w-container-max mx-auto counter-skew">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                    Galeri Juara
+                </h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<img alt="Gallery Image 1" class="w-full h-48 object-cover rounded-lg border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt8MyowzKk6gg9gKzS8TF0fBzqa0mFBiqiWQptV4-1Gn9rYd9WTPA-rbA2AEDj3Kc_EpvwT8F4WOYUug6Tnn3wL6fTqyTMOMRjc_JPpZNEWASgyJy2ylasjbzlX__f0hN38FCz8yXSacUV0_nZbkhO16b1AHb6adaal7U0QWUa--aJpmYl_0oAXSK9ZP8jt8aUCWUBcATaob7nP1P__1coTJz5dvsVHry71hK2MLUBPH_OnMH31hBa"/>
+<img alt="Gallery Image 2" class="w-full h-48 object-cover rounded-lg border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuGuCbEH44VZB52zp1XOkdr0YWL3dFSsNofiXF_6gXX5NQDlBxqqzUmng2v_2DbtAiCQsvQPRep89tIpPqdtTblkGBULnH68j2WaTgDUF5MWo_Th9F8v2ulafwDfLVJygKPF6COjDN0PBC-kJRLCi1d3ziDTkLzlICtxB-4fKbxeFExnGOIm233S2wJkPx-n-YtXKtEX0Sok-xabprptvRMUEhni_jI8IG-uH977y9LqoZZ8qttTBM"/>
+<img alt="Gallery Image 3" class="w-full h-48 object-cover rounded-lg border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8PrVOXZpN6EDgmHymmJw1dT3nxmhLs7eA_8U_K50djHlN1h1eWgpD4iH5o26ntlGj63BdrnIMxfPZSDINnE_a9cxVUX2dHzQhuDx0taXi8Ae4vFMdI3GaYT1l8vzzGqaFoXXlh0lm3RKfc9egAwNTEuqAZpmqt48zmd8kvHZLpmFExv_efcIpM3r6qv9ANgpNce2MrZjroI-b3m0_ajfDdh4HJArNPl0ftbQh7TL3uqNWUs9FGgRN"/>
+<img alt="Gallery Image 4" class="w-full h-48 object-cover rounded-lg border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYMaWnhGvWa4iabphm43T4FSdauHkieiHbDYPH0wEPBjyjoFPlzfXWronAOkY5i8rbQ_egd81h88eUFqPPUGPFV72mhqbtCfMnGwNj5tRVGqHIce9wHc80oqjFK8Ze3daPBEPJyMAYeAc-rHp8VQN96mxmQJJURfN8B3X1Xe3DP8c0F1sAO1dsufN2DICbkIU7VOaPFClIaBQUvTfG9XnyUakUlot482cy01eapx5jNjSMN2Qa6TBc"/>
+<img alt="Gallery Image 5" class="w-full h-48 object-cover rounded-lg border-2 border-primary md:hidden lg:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7hsLcIKaSKSMwB5UikD4SnvKrz_pa38X_lvfklRF1kWWajV89HR8expLPDCU6Ml2dtYveeEU-wKzSLIRzZTct23IOWz-CTi-uIXJzmj2iKBKRNXr3VV_icRZftWivCHsLKm0a5b-iJOmNAi_ERrsFiwLfaFLEG_LHbSqiGL9KhgIymPBmhgdzle_VYJzK3zerwQEK_QgiUg80PE00yxngWLxd6-4NHS5N67A_RXCf9n6B3IB71hLN"/>
+<img alt="Gallery Image 6" class="w-full h-48 object-cover rounded-lg border-2 border-primary md:hidden lg:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLyjTphQ2Tv7f67Wow-wLfdolo1W_IfS5AGLEOwAzztH9gmWt_6KZYvsBEvppuMuXGGR-uTPKqlvdpfXNkgUywvmDdCpblnO6e74CXR20ejbIR4IjDo1a0ghzUVNQhgv1NjH8F_LBTEF8JFvgXQ10Bjqcsnijpxqzx_RCNV0exuD1hB5u-i871z7SQCZEUfp2zbIakFM7T0hXoc6FJCJna073XAR6O0gHqgd1xboW61b6J4-k3hzFA"/>
+<img alt="Gallery Image 7" class="w-full h-48 object-cover rounded-lg border-2 border-primary hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlmlqNs-xTK1wEkUwcDr4I2mg1vcr9vdJj8pAaQ4SdV0NoC_VlaTj19V6zROfk-TCTrwEn2pv3fb8va58E4yfqQukMLZXifHC0H1WrbrjkgqtWjoRWBmv0WdwFNO4snxSPfknfsQfMhQnnpged8H9uLFgdAxHg9nT0vJzmbJn654rY0pUP4BcS-SsPuZqVFka20Hajhw5nqGucD9aSlo2KyUIxIiv9tnBTsiaANIeK44bXk0egkB0A"/>
+<img alt="Gallery Image 8" class="w-full h-48 object-cover rounded-lg border-2 border-primary hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhfezR-8e1Kkqq2PfO4iT8BIsV87DXVb8_nWwr0VTkIa3IB-FNCqvHhOSbr9zCBZRyNrqt0qD13-6Z0yITGvJKdP7gruea8gib2AB2z5MM3VuSP8utdnkQXA-GQ9nLdyiwqztNxhfGp9mz6ad1bFvrZ-mFWmfx-jCtJaFfTB-pgdoa_GeFlQNPUDARAP9DkSKF3EMqon34XRy3uqYb7EB-VLUEH1t_XALyD-mWOGXVa-7a7Ukc8cPn"/>
+</div>
+</div>
+</section>
+<!-- 6. Testimoni -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                Testimoni
+            </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="bg-surface-container p-8 rounded-xl border-t-4 border-secondary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)]">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary font-bold">A</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-primary">Budi S.</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Orang Tua Murid</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant italic">"Anak saya perkembangannya sangat pesat sejak gabung PB Tangkis Jaya. Pelatihnya sabar tapi disiplin."</p>
+</div>
+<div class="bg-surface-container p-8 rounded-xl border-t-4 border-secondary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)]">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary font-bold">R</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-primary">Rini A.</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Atlet Junior</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant italic">"Fasilitas latihannya bagus dan programnya jelas. Saya merasa lebih siap menghadapi turnamen."</p>
+</div>
+<div class="bg-surface-container p-8 rounded-xl border-t-4 border-secondary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)]">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary font-bold">D</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-primary">Dewi K.</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Orang Tua Murid</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant italic">"Sangat merekomendasikan PB ini untuk anak-anak yang ingin serius di bulutangkis. Komunitasnya juga supportif."</p>
+</div>
+</div>
+</section>
+<!-- 7. Harga -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low clip-diagonal relative">
+<div class="max-w-container-max mx-auto counter-skew">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                    Biaya Latihan
+                </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface p-8 rounded-xl border-2 border-primary text-center shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-4">Pendaftaran</h3>
+<div class="text-3xl font-bold text-secondary mb-4">Rp 250.000</div>
+<ul class="font-body-md text-on-surface-variant text-left space-y-2 mb-8 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Biaya pendaftaran awal</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Termasuk 1 buah Kaos Tim</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Kartu Anggota</li>
+</ul>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-xl border-2 border-secondary text-center shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] transform md:-translate-y-4 flex flex-col">
+<div class="bg-secondary text-on-secondary text-xs font-bold px-3 py-1 rounded-full uppercase inline-block mx-auto mb-4 tracking-wider">Populer</div>
+<h3 class="font-headline-lg text-headline-lg text-secondary-fixed uppercase mb-4">Iuran Bulanan (Reguler)</h3>
+<div class="text-4xl font-bold text-tertiary-fixed mb-4">Rp 350.000<span class="text-sm font-normal text-on-primary/70">/bln</span></div>
+<ul class="font-body-md text-on-primary/90 text-left space-y-2 mb-8 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed text-sm">check_circle</span> Latihan 2x Seminggu</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed text-sm">check_circle</span> Sudah termasuk shuttlecock</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed text-sm">check_circle</span> Evaluasi berkala</li>
+</ul>
+<a class="bg-secondary text-on-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-secondary-container transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)]" href="#registration">Pilih Paket</a>
+</div>
+<div class="bg-surface p-8 rounded-xl border-2 border-primary text-center shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-4">Iuran Bulanan (Intensif)</h3>
+<div class="text-3xl font-bold text-secondary mb-4">Rp 500.000<span class="text-sm font-normal text-on-surface-variant">/bln</span></div>
+<ul class="font-body-md text-on-surface-variant text-left space-y-2 mb-8 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Latihan 4x Seminggu</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Sudah termasuk shuttlecock</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Program fisik khusus</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">check_circle</span> Persiapan turnamen</li>
+</ul>
+<a class="border-2 border-primary text-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-primary-container hover:text-on-primary-container transition-colors" href="#registration">Pilih Paket</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Form Pendaftaran -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto" id="registration">
+<div class="max-w-2xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+                Formulir Pendaftaran
+            </h2>
+<p class="font-body-md text-on-surface-variant mt-4">Isi data di bawah ini untuk mendaftar. Tim kami akan segera menghubungi Anda.</p>
+</div>
+<form class="bg-surface-container-low p-8 rounded-xl border-2 border-primary shadow-[8px_8px_0px_0px_rgba(0,36,81,1)] space-y-6">
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="parentName">Nama Orang Tua / Wali</label>
+<input class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="parentName" placeholder="Masukkan nama lengkap" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="phone">Nomor WhatsApp</label>
+<input class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="phone" placeholder="Contoh: 08123456789" required="" type="tel"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="childName">Nama Anak</label>
+<input class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="childName" placeholder="Nama lengkap anak" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="childAge">Usia Anak</label>
+<input class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="childAge" min="5" placeholder="Contoh: 10" required="" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="location">Pilihan Lokasi Latihan</label>
+<select class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="location" required="">
+<option value="">-- Pilih Lokasi --</option>
+<option value="sritex">Sritex Sriwedari</option>
+<option value="hapsari">Hapsari Mojosongo</option>
+<option value="htc">HTC Solobaru</option>
+<option value="scs">SCS Pabelan</option>
+<option value="blulukan">Blulukan Colomadu</option>
+<option disabled="" value="berma">Berma Pajang (Penuh)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-primary uppercase mb-2" for="level">Pilihan Level / Program</label>
+<select class="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md" id="level" required="">
+<option value="">-- Pilih Level --</option>
+<option value="basic">Basic</option>
+<option value="beginner">Beginner</option>
+<option value="intermediate">Intermediate</option>
+<option value="advance">Advance</option>
+</select>
+</div>
+<button class="w-full bg-secondary text-on-primary font-headline-lg text-headline-lg-mobile md:text-headline-lg px-8 py-4 rounded-full uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(146,0,28,1)] hover:bg-secondary-container transition-all hover:translate-y-1 hover:shadow-none mt-4" type="submit">
+                    Kirim Pendaftaran
+                </button>
+</form>
+</div>
+</section>
+<!-- 9. Footer Component -->
+<footer class="w-full relative clip-diagonal-top bg-primary dark:bg-primary-container">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 gap-gutter w-full max-w-container-max mx-auto counter-skew">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="font-headline-lg text-headline-lg text-secondary-fixed italic uppercase">
+                        PB TANGKIS JAYA
+                    </div>
+<div class="font-body-md text-body-md text-on-primary/80 dark:text-on-primary-container/80">
+                        © 2024 PB TANGKIS JAYA. ALL RIGHTS RESERVED.
+                    </div>
+</div>
+<div class="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
+<a class="text-on-primary/80 dark:text-on-primary-container/80 hover:text-secondary-fixed-dim transition-colors" href="#">Terms of Service</a>
+<a class="text-on-primary/80 dark:text-on-primary-container/80 hover:text-secondary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary/80 dark:text-on-primary-container/80 hover:text-secondary-fixed-dim transition-colors" href="#">Contact Us</a>
+<a class="text-tertiary-fixed font-bold hover:text-secondary-fixed-dim transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">chat</span> WhatsApp Support
+                    </a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

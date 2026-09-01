@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Turnamen & Event - PB Tangkis Jaya</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#abc7ff",
+                        "secondary-container": "#d8e1ea",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-low": "#f3f4f5",
+                        "text-main": "#212529",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "surface-container-high": "#e7e8e9",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#5b646b",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "warning": "#ffc107",
+                        "on-primary-fixed-variant": "#284678",
+                        "primary": "#002451",
+                        "outline-variant": "#c4c6d0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-border": "#dee2e6",
+                        "success": "#28a745",
+                        "on-surface-variant": "#43474f",
+                        "on-primary-fixed": "#001b3f",
+                        "surface-dim": "#d9dadb",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#2e1500",
+                        "outline": "#747780",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#693c0a",
+                        "tertiary-fixed-dim": "#fcb87d",
+                        "primary-fixed": "#d7e2ff",
+                        "on-background": "#191c1d",
+                        "error": "#dc3545",
+                        "on-primary-container": "#89a5dd",
+                        "inverse-surface": "#2e3132",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#d7985f",
+                        "tertiary": "#3c1e00",
+                        "on-secondary-fixed-variant": "#3f484f",
+                        "secondary": "#575f67",
+                        "text-muted": "#6c757d",
+                        "secondary-fixed": "#dbe4ed",
+                        "secondary-fixed-dim": "#bfc8d0",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141d23",
+                        "tertiary-container": "#5b3000",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "primary-container": "#1a3a6b",
+                        "surface-tint": "#415e91"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "container-padding": "2rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased flex overflow-hidden min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary flex flex-col h-full w-[260px] z-20">
+<!-- Brand / Header -->
+<div class="px-6 py-8 flex flex-col items-center border-b border-on-primary-fixed-variant">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-4 overflow-hidden border-2 border-primary-fixed">
+<img alt="Badminton Club Logo" class="w-full h-full object-cover" data-alt="A modern, minimalist logo for a badminton club featuring a stylized shuttlecock in crisp white and navy blue tones. The design is sleek, professional, and sports-oriented, suitable for an administrative dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0kRIPFkAxN-MPbIO9JZHhA5ag9Hr64NUqTCHdUGk03LuHwPgn05-aocPA1f57W5-GbfOYW-N4fU3CplXDZ6W9Naap6NokqHT0X3KQ6V7ebLlaUU6gWgOB-rJpyaTIYWWBwzxuHFNxYzutJhUALTNl_CM3Rm9f-UmRfr0cXSGs3CuNb6zc_xfp6ReDslA4V7hGXy9dV9-7tmG2FOII5symO3dkf6TFFe6j7km9SrvLy2JaSkdY69s7"/>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary-fixed mb-1">ShuttleAdmin</h1>
+<p class="font-label-md text-label-md text-primary-fixed-dim opacity-80">Badminton Club CMS</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 py-6 flex flex-col gap-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined transition-transform duration-150 group-hover:scale-[0.98]" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<!-- Turnamen & Event (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-fixed border-l-4 border-primary-fixed-dim font-body-md text-body-md opacity-100 scale-[0.98] duration-150 transition-all" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="event">event</span>
+                Turnamen & Event
+            </a>
+<!-- Galeri Juara -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined transition-transform duration-150 group-hover:scale-[0.98]" data-icon="military_tech">military_tech</span>
+                Galeri Juara
+            </a>
+</nav>
+<!-- Logout -->
+<div class="p-4 mt-auto border-t border-on-primary-fixed-variant">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim opacity-80 hover:bg-primary-container hover:opacity-100 transition-colors font-body-md text-body-md rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-surface-border flex justify-between items-center h-16 px-gutter shrink-0 z-10 w-full">
+<div class="flex items-center gap-4">
+<h2 class="text-headline-md font-headline-md text-primary font-bold border-b-2 border-primary pb-1">Turnamen & Event</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 hover:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full text-text-muted hover:bg-surface-container-low transition-colors duration-100 hover:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden ml-2 border border-surface-border">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a sports club administrator in a brightly lit, modern office environment. The person appears approachable and focused. Soft, natural lighting accentuates a clean, professional aesthetic suitable for a dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASfljCbCrcu6D-15o4MLhvz1CVAzKy6wT0hQDHtqaTs8F_rPjMge4Va3fG7YhGMmwOgSrbw0QzUQqY_3rLjoyIPmoZ-uJyr8Wyx4WdSHCW75cUyeLp68-RPX9YSWY9RpAbmynTicC4XrlZ2o6gT7JC1FMAov-XkpFA9vFU-OHVlBGnXjEyQrLA8rlyzUjRL5B8WNaDs6mCAEL19olx6ct3A4u28YwZsozNPswAK6NFFI4qcP_zlJVJ"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-container-padding">
+<!-- Actions Row -->
+<div class="flex justify-between items-center mb-stack-lg">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-outline text-opacity-50 text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-surface-border rounded focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-shadow font-body-md text-body-md" placeholder="Cari turnamen..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary hover:bg-primary-container px-4 py-2 rounded flex items-center gap-2 transition-colors shadow-sm font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    Tambah Turnamen
+                </button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-lg border border-surface-border overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-border font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-6 w-24 text-center">Poster</th>
+<th class="py-3 px-6">Judul Turnamen</th>
+<th class="py-3 px-6">Tanggal</th>
+<th class="py-3 px-6">Status</th>
+<th class="py-3 px-6 w-32 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-border">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-3 px-6">
+<div class="w-12 h-16 bg-surface-variant rounded overflow-hidden mx-auto border border-surface-border shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A small promotional poster thumbnail for a badminton tournament named 'Solo Open 2024'. The design features dynamic silhouettes of badminton players against a vibrant blue and white background, exuding energy and competitive spirit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVQmCcm36sypB1gUJ9ADEh2JAcd44-sTyf9stfbD32nRnjzPQc426qHpqSJXQELNYC-kVpoF8nPpoPcXn5EPcOFUeOSEikx6HF_pEADvQ1I4o9sg_6HjMmo0PMeZ1C8e2q2qJse0fT9Q3f3Krc8clgKsbmFgwQE9cetIpvG0d6Awp520Z18JsRfhC8psFH5kEIALXGdTuWCXkp7mq1vM_vcqQUVj-9TKuPMlXAEPKf9t-O_JldRVrS"/>
+</div>
+</td>
+<td class="py-3 px-6 font-headline-md text-headline-md text-on-surface">Solo Open 2024</td>
+<td class="py-3 px-6 font-body-md text-body-md text-on-surface-variant">25-27 Okt 2024</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-success bg-opacity-10 text-success border border-success border-opacity-20">
+                                    Aktif
+                                </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-secondary hover:text-primary transition-colors rounded hover:bg-surface-container-low" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-1.5 text-secondary hover:text-error transition-colors rounded hover:bg-error-container" title="Hapus">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-3 px-6">
+<div class="w-12 h-16 bg-surface-variant rounded overflow-hidden mx-auto border border-surface-border shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A small promotional poster thumbnail for a local badminton championship. The design uses sophisticated geometric patterns in navy blue and gold, conveying a sense of prestige and official club standing. The visual is clean and minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjqMCp9Zr8O1jkOE6wF1rntqSH9hi2CdGTg7RQzLmLLwlrBlzE4VOS7Tg8VcG1p7aDEWsbpzzZ-irNqOyGL9w9xY-lABAXLsdtwCAIup_N_2t4nRy-NHRwdddU4gd8vrS-LOvuLJjqnBA150rKUfQwgvxbI6t1Q8F6ONA2y9EWDMocG3V37-nWDpivOsgRsodfRfC_Q0S-CorFnWc206Sbh-qnH6yVzxsXq2kSlhlZEgsaTLYMRkWR"/>
+</div>
+</td>
+<td class="py-3 px-6 font-headline-md text-headline-md text-on-surface">Kejurda Jateng 2024</td>
+<td class="py-3 px-6 font-body-md text-body-md text-on-surface-variant">10-12 Sep 2024</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-dim text-on-surface-variant border border-outline-variant">
+                                    Selesai
+                                </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-secondary hover:text-primary transition-colors rounded hover:bg-surface-container-low" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-1.5 text-secondary hover:text-error transition-colors rounded hover:bg-error-container" title="Hapus">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+</body></html>
