@@ -11,6 +11,16 @@ const navItems = [
     icon: "dashboard",
   },
   {
+    href: "/admin/program",
+    label: "Program Latihan",
+    icon: "sports_tennis",
+  },
+  {
+    href: "/admin/lokasi",
+    label: "Lokasi & Jadwal",
+    icon: "location_on",
+  },
+  {
     href: "/admin/turnamen",
     label: "Turnamen & Event",
     icon: "event",
@@ -19,6 +29,11 @@ const navItems = [
     href: "/admin/galeri",
     label: "Galeri Juara",
     icon: "military_tech",
+  },
+  {
+    href: "/admin/biaya",
+    label: "Biaya Latihan",
+    icon: "payments",
   },
 ];
 

@@ -64,7 +64,75 @@ CREATE POLICY "Authenticated can delete gallery photos"
   ON gallery_photos FOR DELETE
   USING (auth.role() = 'authenticated');
 
--- 7. Storage policies for tournament-posters bucket
+-- 7. Create programs table
+CREATE TABLE IF NOT EXISTS programs (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  icon TEXT NOT NULL DEFAULT 'sports_gymnastics',
+  sort_order INT NOT NULL DEFAULT 0,
+  is_featured BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE programs ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can view programs"
+  ON programs FOR SELECT USING (true);
+CREATE POLICY "Authenticated can insert programs"
+  ON programs FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update programs"
+  ON programs FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can delete programs"
+  ON programs FOR DELETE USING (auth.role() = 'authenticated');
+
+-- 8. Create locations table
+CREATE TABLE IF NOT EXISTS locations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  address TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'AVAILABLE' CHECK (status IN ('AVAILABLE', 'FULL')),
+  schedules JSONB NOT NULL DEFAULT '[]',
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE locations ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can view locations"
+  ON locations FOR SELECT USING (true);
+CREATE POLICY "Authenticated can insert locations"
+  ON locations FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update locations"
+  ON locations FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can delete locations"
+  ON locations FOR DELETE USING (auth.role() = 'authenticated');
+
+-- 9. Create pricing table
+CREATE TABLE IF NOT EXISTS pricing (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  price INT NOT NULL,
+  period TEXT,
+  features JSONB NOT NULL DEFAULT '[]',
+  is_popular BOOLEAN NOT NULL DEFAULT false,
+  cta_text TEXT NOT NULL DEFAULT 'Pilih Paket',
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE pricing ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can view pricing"
+  ON pricing FOR SELECT USING (true);
+CREATE POLICY "Authenticated can insert pricing"
+  ON pricing FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update pricing"
+  ON pricing FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can delete pricing"
+  ON pricing FOR DELETE USING (auth.role() = 'authenticated');
+
+-- 10. Storage policies for tournament-posters bucket
 CREATE POLICY "Public can view tournament posters"
   ON storage.objects FOR SELECT
   USING (bucket_id = 'tournament-posters');

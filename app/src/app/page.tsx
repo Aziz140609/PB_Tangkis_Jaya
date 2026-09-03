@@ -1,11 +1,14 @@
-import { getTournaments, getGalleryPhotos } from "@/actions";
+import { getTournaments, getGalleryPhotos, getPrograms, getLocations, getPricing } from "@/actions";
 import RegistrationForm from "@/components/landing/registration-form";
 import Header from "@/components/landing/header";
 
 export default async function HomePage() {
-  const [tournaments, galleryPhotos] = await Promise.all([
+  const [tournaments, galleryPhotos, programs, locations, pricing] = await Promise.all([
     getTournaments(),
     getGalleryPhotos(),
+    getPrograms(),
+    getLocations(),
+    getPricing(),
   ]);
 
   return (
@@ -99,63 +102,54 @@ export default async function HomePage() {
               Program Latihan
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-            <div className="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-3xl">
-                  sports_gymnastics
-                </span>
-              </div>
-              <h3 className="font-headline-lg text-headline-lg text-primary uppercase mb-2">
-                Basic
-              </h3>
-              <p className="font-body-md text-on-surface-variant">
-                Pengenalan dasar bulutangkis, teknik pegangan raket, dan langkah
-                dasar.
-              </p>
+          {programs.length === 0 ? (
+            <p className="text-center text-on-surface-variant font-body-lg py-12">
+              Belum ada program latihan yang tersedia.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+              {programs.map((prog) => (
+                <div
+                  key={prog.id}
+                  className={
+                    prog.is_featured
+                      ? "bg-primary text-white p-8 rounded-xl border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(183,16,42,1)] transform hover:-translate-y-2 transition-transform"
+                      : "bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform"
+                  }
+                >
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 ${
+                      prog.is_featured
+                        ? "bg-secondary text-on-secondary"
+                        : "bg-primary-container text-on-primary-container"
+                    }`}
+                  >
+                    <span className="material-symbols-outlined text-3xl">
+                      {prog.icon}
+                    </span>
+                  </div>
+                  <h3
+                    className={`font-headline-lg text-headline-lg uppercase mb-2 ${
+                      prog.is_featured
+                        ? "text-secondary-fixed"
+                        : "text-primary"
+                    }`}
+                  >
+                    {prog.title}
+                  </h3>
+                  <p
+                    className={`font-body-md ${
+                      prog.is_featured
+                        ? "text-primary-fixed-dim"
+                        : "text-on-surface-variant"
+                    }`}
+                  >
+                    {prog.description}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-3xl">
-                  fitness_center
-                </span>
-              </div>
-              <h3 className="font-headline-lg text-headline-lg text-primary uppercase mb-2">
-                Beginner
-              </h3>
-              <p className="font-body-md text-on-surface-variant">
-                Fokus pada teknik pukulan dasar, servis, dan pengenalan taktik
-                permainan.
-              </p>
-            </div>
-            <div className="bg-surface p-8 rounded-xl border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] transform hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-3xl">
-                  sports_score
-                </span>
-              </div>
-              <h3 className="font-headline-lg text-headline-lg text-primary uppercase mb-2">
-                Intermediate
-              </h3>
-              <p className="font-body-md text-on-surface-variant">
-                Pengembangan fisik, variasi pukulan, dan strategi pertandingan.
-              </p>
-            </div>
-            <div className="bg-primary text-white p-8 rounded-xl border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(183,16,42,1)] transform hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-3xl">
-                  workspace_premium
-                </span>
-              </div>
-              <h3 className="font-headline-lg text-headline-lg text-secondary-fixed uppercase mb-2">
-                Advance
-              </h3>
-              <p className="font-body-md text-primary-fixed-dim">
-                Persiapan turnamen, simulasi pertandingan, dan program latihan
-                intensif atlet.
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -166,110 +160,73 @@ export default async function HomePage() {
             Lokasi & Jadwal
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-          {[
-            {
-              name: "Sritex Sriwedari",
-              addr: "Jl. Kebangkitan Nasional, Sriwedari, Surakarta",
-              status: "AVAILABLE",
-              schedules: [
-                { day: "Senin & Rabu", time: "15:00 - 18:00" },
-                { day: "Jumat", time: "14:00 - 17:00" },
-              ],
-            },
-            {
-              name: "Hapsari Mojosongo",
-              addr: "Jl. Brigjen Katamso, Mojosongo, Surakarta",
-              status: "AVAILABLE",
-              schedules: [
-                { day: "Selasa & Kamis", time: "16:00 - 19:00" },
-                { day: "Sabtu", time: "08:00 - 11:00" },
-              ],
-            },
-            {
-              name: "HTC Solobaru",
-              addr: "Hartono Trade Center, Solo Baru",
-              status: "AVAILABLE",
-              schedules: [{ day: "Senin & Kamis", time: "18:00 - 21:00" }],
-            },
-            {
-              name: "SCS Pabelan",
-              addr: "Pabelan, Kartasura",
-              status: "AVAILABLE",
-              schedules: [{ day: "Rabu & Jumat", time: "16:00 - 19:00" }],
-            },
-            {
-              name: "Blulukan Colomadu",
-              addr: "Jl. Adi Sucipto, Colomadu",
-              status: "AVAILABLE",
-              schedules: [{ day: "Selasa & Sabtu", time: "15:00 - 18:00" }],
-            },
-            {
-              name: "Berma Pajang",
-              addr: "Pajang, Laweyan, Surakarta",
-              status: "FULL",
-              schedules: [{ day: "Senin - Jumat", time: "15:00 - 20:00" }],
-            },
-          ].map((loc) => (
-            <div
-              key={loc.name}
-              className={`bg-surface-container p-6 rounded-xl border flex flex-col justify-between ${
-                loc.status === "FULL"
-                  ? "border-error opacity-75 relative overflow-hidden"
-                  : "border-outline-variant"
-              }`}
-            >
-              {loc.status === "FULL" && (
-                <div className="absolute top-4 right-[-30px] bg-error text-on-error font-bold text-xs py-1 px-8 transform rotate-45">
-                  FULL
-                </div>
-              )}
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <h3
-                    className={`font-headline-lg text-headline-lg-mobile uppercase ${
-                      loc.status === "FULL"
-                        ? "text-on-surface-variant"
-                        : "text-primary"
-                    }`}
-                  >
-                    {loc.name}
-                  </h3>
-                  {loc.status === "AVAILABLE" && (
-                    <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">
-                      AVAILABLE
-                    </span>
-                  )}
-                </div>
-                <p className="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
-                  <span
-                    className={`material-symbols-outlined text-sm mt-1 ${
-                      loc.status === "FULL"
-                        ? "text-on-surface-variant"
-                        : "text-primary"
-                    }`}
-                  >
-                    location_on
-                  </span>
-                  {loc.addr}
-                </p>
-              </div>
-              <div className="space-y-2">
-                {loc.schedules.map((s) => (
-                  <div
-                    key={s.day}
-                    className="flex justify-between border-t border-outline-variant pt-2"
-                  >
-                    <span className="font-body-md font-semibold">{s.day}</span>
-                    <span className="font-body-md text-on-surface-variant">
-                      {s.time}
-                    </span>
+        {locations.length === 0 ? (
+          <p className="text-center text-on-surface-variant font-body-lg py-12">
+            Belum ada lokasi yang tersedia.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            {locations.map((loc) => (
+              <div
+                key={loc.id}
+                className={`bg-surface-container p-6 rounded-xl border flex flex-col justify-between ${
+                  loc.status === "FULL"
+                    ? "border-error opacity-75 relative overflow-hidden"
+                    : "border-outline-variant"
+                }`}
+              >
+                {loc.status === "FULL" && (
+                  <div className="absolute top-4 right-[-30px] bg-error text-on-error font-bold text-xs py-1 px-8 transform rotate-45">
+                    FULL
                   </div>
-                ))}
+                )}
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <h3
+                      className={`font-headline-lg text-headline-lg-mobile uppercase ${
+                        loc.status === "FULL"
+                          ? "text-on-surface-variant"
+                          : "text-primary"
+                      }`}
+                    >
+                      {loc.name}
+                    </h3>
+                    {loc.status === "AVAILABLE" && (
+                      <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">
+                        AVAILABLE
+                      </span>
+                    )}
+                  </div>
+                  <p className="font-body-md text-on-surface-variant mb-4 flex items-start gap-2">
+                    <span
+                      className={`material-symbols-outlined text-sm mt-1 ${
+                        loc.status === "FULL"
+                          ? "text-on-surface-variant"
+                          : "text-primary"
+                      }`}
+                    >
+                      location_on
+                    </span>
+                    {loc.address}
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  {loc.schedules.map((s, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between border-t border-outline-variant pt-2"
+                    >
+                      <span className="font-body-md font-semibold">{s.day}</span>
+                      <span className="font-body-md text-on-surface-variant">
+                        {s.time}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Turnamen & Event */}
@@ -442,117 +399,94 @@ export default async function HomePage() {
               Biaya Latihan
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            <div className="bg-surface p-8 rounded-xl border-2 border-primary text-center shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] flex flex-col">
-              <h3 className="font-headline-lg text-headline-lg text-primary uppercase mb-4">
-                Pendaftaran
-              </h3>
-              <div className="text-3xl font-bold text-secondary mb-4">
-                Rp 250.000
-              </div>
-              <ul className="font-body-md text-on-surface-variant text-left space-y-2 mb-8 flex-grow">
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Biaya pendaftaran awal
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Termasuk 1 buah Kaos Tim
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Kartu Anggota
-                </li>
-              </ul>
+          {pricing.length === 0 ? (
+            <p className="text-center text-on-surface-variant font-body-lg py-12">
+              Belum ada informasi biaya.
+            </p>
+          ) : (
+            <div className={`grid grid-cols-1 md:grid-cols-${Math.min(pricing.length, 3)} gap-gutter`}>
+              {pricing.map((p) => (
+                <div
+                  key={p.id}
+                  className={
+                    p.is_popular
+                      ? "bg-primary text-white p-8 rounded-xl border-2 border-secondary text-center shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] transform md:-translate-y-4 flex flex-col"
+                      : "bg-surface p-8 rounded-xl border-2 border-primary text-center shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] flex flex-col"
+                  }
+                >
+                  {p.is_popular && (
+                    <div className="bg-secondary text-on-secondary text-xs font-bold px-3 py-1 rounded-full uppercase inline-block mx-auto mb-4 tracking-wider">
+                      Populer
+                    </div>
+                  )}
+                  <h3
+                    className={`font-headline-lg text-headline-lg uppercase mb-4 ${
+                      p.is_popular ? "text-secondary-fixed" : "text-primary"
+                    }`}
+                  >
+                    {p.title}
+                  </h3>
+                  <div
+                    className={`font-bold mb-4 ${
+                      p.is_popular
+                        ? "text-4xl text-tertiary-fixed"
+                        : "text-3xl text-secondary"
+                    }`}
+                  >
+                    Rp {new Intl.NumberFormat("id-ID").format(p.price)}
+                    {p.period && (
+                      <span
+                        className={`text-sm font-normal ${
+                          p.is_popular
+                            ? "text-white/70"
+                            : "text-on-surface-variant"
+                        }`}
+                      >
+                        /{p.period}
+                      </span>
+                    )}
+                  </div>
+                  <ul
+                    className={`font-body-md text-left space-y-2 mb-8 flex-grow ${
+                      p.is_popular
+                        ? "text-white/90"
+                        : "text-on-surface-variant"
+                    }`}
+                  >
+                    {p.features.map((feat, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <span
+                          className={`material-symbols-outlined text-sm ${
+                            p.is_popular
+                              ? "text-tertiary-fixed"
+                              : "text-green-600"
+                          }`}
+                        >
+                          check_circle
+                        </span>
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                  {p.is_popular ? (
+                    <a
+                      className="bg-secondary text-on-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-secondary-container transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)]"
+                      href="#registration"
+                    >
+                      {p.cta_text}
+                    </a>
+                  ) : (
+                    <a
+                      className="border-2 border-primary text-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                      href="#registration"
+                    >
+                      {p.cta_text}
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
-            <div className="bg-primary text-white p-8 rounded-xl border-2 border-secondary text-center shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] transform md:-translate-y-4 flex flex-col">
-              <div className="bg-secondary text-on-secondary text-xs font-bold px-3 py-1 rounded-full uppercase inline-block mx-auto mb-4 tracking-wider">
-                Populer
-              </div>
-              <h3 className="font-headline-lg text-headline-lg text-secondary-fixed uppercase mb-4">
-                Iuran Bulanan (Reguler)
-              </h3>
-              <div className="text-4xl font-bold text-tertiary-fixed mb-4">
-                Rp 350.000
-                <span className="text-sm font-normal text-white/70">/bln</span>
-              </div>
-              <ul className="font-body-md text-white/90 text-left space-y-2 mb-8 flex-grow">
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-tertiary-fixed text-sm">
-                    check_circle
-                  </span>
-                  Latihan 2x Seminggu
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-tertiary-fixed text-sm">
-                    check_circle
-                  </span>
-                  Sudah termasuk shuttlecock
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-tertiary-fixed text-sm">
-                    check_circle
-                  </span>
-                  Evaluasi berkala
-                </li>
-              </ul>
-              <a
-                className="bg-secondary text-on-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-secondary-container transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)]"
-                href="#registration"
-              >
-                Pilih Paket
-              </a>
-            </div>
-            <div className="bg-surface p-8 rounded-xl border-2 border-primary text-center shadow-[4px_4px_0px_0px_rgba(0,36,81,1)] flex flex-col">
-              <h3 className="font-headline-lg text-headline-lg text-primary uppercase mb-4">
-                Iuran Bulanan (Intensif)
-              </h3>
-              <div className="text-3xl font-bold text-secondary mb-4">
-                Rp 500.000
-                <span className="text-sm font-normal text-on-surface-variant">
-                  /bln
-                </span>
-              </div>
-              <ul className="font-body-md text-on-surface-variant text-left space-y-2 mb-8 flex-grow">
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Latihan 4x Seminggu
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Sudah termasuk shuttlecock
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Program fisik khusus
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600 text-sm">
-                    check_circle
-                  </span>
-                  Persiapan turnamen
-                </li>
-              </ul>
-              <a
-                className="border-2 border-primary text-primary font-label-md px-6 py-3 rounded-full uppercase hover:bg-primary-container hover:text-on-primary-container transition-colors"
-                href="#registration"
-              >
-                Pilih Paket
-              </a>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 

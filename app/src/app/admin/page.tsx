@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { getTournamentCount, getGalleryCount } from "@/actions";
+import { getTournamentCount, getGalleryCount, getProgramCount, getLocationCount, getPricingCount } from "@/actions";
 
 export default async function AdminDashboardPage() {
-  const [tournamentCount, galleryCount] = await Promise.all([
+  const [tournamentCount, galleryCount, programCount, locationCount, pricingCount] = await Promise.all([
     getTournamentCount(),
     getGalleryCount(),
+    getProgramCount(),
+    getLocationCount(),
+    getPricingCount(),
   ]);
 
   return (
@@ -89,7 +92,45 @@ export default async function AdminDashboardPage() {
                 Total Program Latihan
               </p>
               <p className="font-headline-xl text-[36px] font-bold text-text-main leading-none">
-                4
+                {programCount}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="bg-surface-container-lowest border border-surface-border rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex justify-between items-start mb-4">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-primary">
+                <span className="material-symbols-outlined text-[28px]">
+                  location_on
+                </span>
+              </div>
+            </div>
+            <div>
+              <p className="font-label-md text-label-md text-text-muted uppercase tracking-wider mb-1">
+                Total Lokasi
+              </p>
+              <p className="font-headline-xl text-[36px] font-bold text-text-main leading-none">
+                {locationCount}
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-surface-container-lowest border border-surface-border rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex justify-between items-start mb-4">
+              <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-[28px]">
+                  payments
+                </span>
+              </div>
+            </div>
+            <div>
+              <p className="font-label-md text-label-md text-text-muted uppercase tracking-wider mb-1">
+                Total Paket Biaya
+              </p>
+              <p className="font-headline-xl text-[36px] font-bold text-text-main leading-none">
+                {pricingCount}
               </p>
             </div>
           </div>
@@ -130,6 +171,54 @@ export default async function AdminDashboardPage() {
                   </span>
                   <span className="font-body-md text-body-md font-medium">
                     Unggah Foto Galeri
+                  </span>
+                </div>
+                <span className="material-symbols-outlined text-[18px] text-secondary">
+                  chevron_right
+                </span>
+              </Link>
+              <Link
+                href="/admin/program"
+                className="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-text-main rounded-lg hover:bg-surface-container-highest border border-transparent transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[20px] text-secondary">
+                    sports_tennis
+                  </span>
+                  <span className="font-body-md text-body-md font-medium">
+                    Kelola Program Latihan
+                  </span>
+                </div>
+                <span className="material-symbols-outlined text-[18px] text-secondary">
+                  chevron_right
+                </span>
+              </Link>
+              <Link
+                href="/admin/lokasi"
+                className="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-text-main rounded-lg hover:bg-surface-container-highest border border-transparent transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[20px] text-secondary">
+                    location_on
+                  </span>
+                  <span className="font-body-md text-body-md font-medium">
+                    Kelola Lokasi & Jadwal
+                  </span>
+                </div>
+                <span className="material-symbols-outlined text-[18px] text-secondary">
+                  chevron_right
+                </span>
+              </Link>
+              <Link
+                href="/admin/biaya"
+                className="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-text-main rounded-lg hover:bg-surface-container-highest border border-transparent transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[20px] text-secondary">
+                    payments
+                  </span>
+                  <span className="font-body-md text-body-md font-medium">
+                    Kelola Biaya Latihan
                   </span>
                 </div>
                 <span className="material-symbols-outlined text-[18px] text-secondary">
