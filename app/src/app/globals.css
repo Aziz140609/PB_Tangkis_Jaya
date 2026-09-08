@@ -5,6 +5,7 @@
 :root {
   --background: #f8f9fa;
   --foreground: #191c1d;
+  scroll-behavior: smooth;
 }
 
 body {

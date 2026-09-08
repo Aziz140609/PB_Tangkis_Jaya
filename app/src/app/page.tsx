@@ -1,14 +1,15 @@
-import { getTournaments, getGalleryPhotos, getPrograms, getLocations, getPricing } from "@/actions";
+﻿import { getTournaments, getGalleryPhotos, getPrograms, getLocations, getPricing, getCoaches } from "@/actions";
 import RegistrationForm from "@/components/landing/registration-form";
 import Header from "@/components/landing/header";
 
 export default async function HomePage() {
-  const [tournaments, galleryPhotos, programs, locations, pricing] = await Promise.all([
+  const [tournaments, galleryPhotos, programs, locations, pricing, coaches] = await Promise.all([
     getTournaments(),
     getGalleryPhotos(),
     getPrograms(),
     getLocations(),
     getPricing(),
+    getCoaches(),
   ]);
 
   return (
@@ -27,11 +28,11 @@ export default async function HomePage() {
         </div>
         <div className="relative z-10 text-center flex flex-col items-center px-4 max-w-container-max mx-auto counter-skew">
           <div className="bg-surface rounded-full p-4 shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] mb-8 transform -rotate-2">
-            <img
-              alt="PB Tangkis Jaya Logo"
-              className="w-32 h-32 md:w-48 md:h-48 rounded-full object-contain"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALgpkWCDA40e1hQHT2r3SfXvlIJQTy1he7N4uaJS9bgIhVznolZbDPs0lqJP4-647AX1irrLTsVrJC70Q2e-TkAPWVhzXj0iMjaDym1phbGV-oLReJQzFNi9MEmm2MZNkYdqmBQiVT1K5r4mJCAxFyPdAE2dwSOnHdn68XgRUUym8jS4N20F6VmKAPI7djk7WShgb5T09FR9RG6G2JkAplf50SPMqqJ40r4_WhlXkLkZthvNm7ltki"
-            />
+              <img
+                alt="PB Tangkis Jaya Logo"
+                className="w-32 h-32 md:w-48 md:h-48 rounded-full object-contain"
+                src="/images/logo.jpeg"
+              />
           </div>
           <h1 className="font-display-lg text-display-lg text-white uppercase italic text-shadow-heavy mb-2 transform -skew-x-6">
             PB TANGKIS JAYA
@@ -95,7 +96,7 @@ export default async function HomePage() {
       </section>
 
       {/* Program Latihan */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low clip-diagonal relative">
+      <section id="training" className="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low clip-diagonal relative">
         <div className="max-w-container-max mx-auto counter-skew">
           <div className="text-center mb-16">
             <h2 className="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
@@ -153,8 +154,39 @@ export default async function HomePage() {
         </div>
       </section>
 
+            {/* Pelatih */}
+      <section id="coaches" className="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest max-w-container-max mx-auto clip-diagonal-top clip-diagonal-bottom my-12 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
+            Pelatih Kami
+          </h2>
+        </div>
+        {coaches.length === 0 ? (
+          <p className="text-center text-on-surface-variant font-body-lg py-12">
+            Belum ada pelatih yang terdaftar.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            {coaches.map((coach) => (
+              <div key={coach.id} className="group relative">
+                <div className="absolute inset-0 bg-primary translate-x-2 translate-y-2 rounded-xl transition-transform group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                <div className="bg-surface border-2 border-primary p-6 rounded-xl relative z-10 h-full flex flex-col items-center text-center transform transition-transform group-hover:-translate-y-1">
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-secondary mb-4">
+                    <img src={coach.image_url} alt={coach.name} className="w-full h-full object-cover" />
+                  </div>
+                  <h3 className="font-headline-md text-headline-md text-on-surface uppercase mb-1">{coach.name}</h3>
+                  <span className="inline-block bg-primary text-on-primary px-3 py-1 text-sm font-bold uppercase rounded-full mb-3">
+                    {coach.role}
+                  </span>
+                  <p className="font-body-md text-body-md text-on-surface-variant mt-2">{coach.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
       {/* Lokasi & Jadwal */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto">
+      <section id="schedules" className="py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-headline-xl text-headline-xl text-primary uppercase inline-block border-b-4 border-secondary pb-2 transform -skew-x-6">
             Lokasi & Jadwal
@@ -491,7 +523,9 @@ export default async function HomePage() {
       </section>
 
       {/* Form Pendaftaran */}
-      <RegistrationForm />
+      <div id="registration">
+        <RegistrationForm />
+      </div>
 
       {/* Footer */}
       <footer className="w-full relative clip-diagonal-top bg-primary">
@@ -501,7 +535,7 @@ export default async function HomePage() {
               PB TANGKIS JAYA
             </div>
             <div className="font-body-md text-body-md text-white/80">
-              © 2024 PB TANGKIS JAYA. ALL RIGHTS RESERVED.
+              Â© 2024 PB TANGKIS JAYA. ALL RIGHTS RESERVED.
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
@@ -537,3 +571,4 @@ export default async function HomePage() {
     </>
   );
 }
+

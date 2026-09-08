@@ -16,6 +16,11 @@ const navItems = [
     icon: "sports_tennis",
   },
   {
+    href: "/admin/pelatih",
+    label: "Pelatih",
+    icon: "groups",
+  },
+  {
     href: "/admin/lokasi",
     label: "Lokasi & Jadwal",
     icon: "location_on",

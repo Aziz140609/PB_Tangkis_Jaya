@@ -157,3 +157,37 @@ CREATE POLICY "Authenticated can upload gallery photos"
 CREATE POLICY "Authenticated can delete gallery photos"
   ON storage.objects FOR DELETE
   USING (bucket_id = 'gallery-photos' AND auth.role() = 'authenticated');
+-- 11. Create coaches table
+CREATE TABLE IF NOT EXISTS coaches (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'Pelatih',
+  description TEXT NOT NULL,
+  image_url TEXT NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE coaches ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can view coaches"
+  ON coaches FOR SELECT USING (true);
+CREATE POLICY "Authenticated can insert coaches"
+  ON coaches FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update coaches"
+  ON coaches FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can delete coaches"
+  ON coaches FOR DELETE USING (auth.role() = 'authenticated');
+
+-- 12. Storage policies for coach-photos bucket
+CREATE POLICY "Public can view coach photos"
+  ON storage.objects FOR SELECT
+  USING (bucket_id = 'coach-photos');
+
+CREATE POLICY "Authenticated can upload coach photos"
+  ON storage.objects FOR INSERT
+  WITH CHECK (bucket_id = 'coach-photos' AND auth.role() = 'authenticated');
+
+CREATE POLICY "Authenticated can delete coach photos"
+  ON storage.objects FOR DELETE
+  USING (bucket_id = 'coach-photos' AND auth.role() = 'authenticated');

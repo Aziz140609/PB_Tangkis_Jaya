@@ -8,8 +8,9 @@ export default function Header() {
       <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
         <Link
           href="/"
-          className="font-headline-xl text-headline-xl italic text-primary uppercase tracking-tighter"
+          className="flex items-center gap-2 font-headline-xl text-headline-xl italic text-primary uppercase tracking-tighter"
         >
+          <img src="/images/logo.jpeg" alt="Logo" className="w-10 h-10 object-contain rounded-full" />
           PB TANGKIS JAYA
         </Link>
         <nav className="hidden md:flex gap-8 items-center">

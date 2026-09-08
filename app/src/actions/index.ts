@@ -631,3 +631,125 @@ export async function deletePricing(id: string) {
   revalidatePath("/admin/biaya");
   return { success: true };
 }
+// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” Coaches â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+
+export type Coach = {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  image_url: string;
+  sort_order: number;
+  created_at: string;
+};
+
+export async function getCoaches(): Promise<Coach[]> {
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("coaches")
+      .select("*")
+      .order("sort_order", { ascending: true });
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function createCoach(formData: FormData) {
+  const supabase = await createClient();
+
+  const name = formData.get("name") as string;
+  const role = (formData.get("role") as string) || "Pelatih";
+  const description = formData.get("description") as string;
+  const sort_order = parseInt((formData.get("sort_order") as string) || "0");
+  const imageFile = formData.get("image") as File | null;
+
+  if (!imageFile || imageFile.size === 0) {
+    return { error: "Foto wajib diupload" };
+  }
+
+  const fileName = `${Date.now()}-${imageFile.name}`;
+  const { error: uploadError } = await supabase.storage
+    .from("coach-photos")
+    .upload(fileName, imageFile);
+
+  if (uploadError) {
+    return { error: uploadError.message };
+  }
+
+  const { data: urlData } = supabase.storage
+    .from("coach-photos")
+    .getPublicUrl(fileName);
+
+  const { error } = await supabase.from("coaches").insert({
+    name,
+    role,
+    description,
+    sort_order,
+    image_url: urlData.publicUrl,
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/admin/pelatih");
+  return { success: true };
+}
+
+export async function updateCoach(id: string, formData: FormData) {
+  const supabase = await createClient();
+
+  const name = formData.get("name") as string;
+  const role = (formData.get("role") as string) || "Pelatih";
+  const description = formData.get("description") as string;
+  const sort_order = parseInt((formData.get("sort_order") as string) || "0");
+  const imageFile = formData.get("image") as File | null;
+
+  let updateData: any = { name, role, description, sort_order };
+
+  if (imageFile && imageFile.size > 0) {
+    const fileName = `${Date.now()}-${imageFile.name}`;
+    const { error: uploadError } = await supabase.storage
+      .from("coach-photos")
+      .upload(fileName, imageFile);
+
+    if (uploadError) {
+      return { error: uploadError.message };
+    }
+
+    const { data: urlData } = supabase.storage
+      .from("coach-photos")
+      .getPublicUrl(fileName);
+      
+    updateData.image_url = urlData.publicUrl;
+  }
+
+  const { error } = await supabase
+    .from("coaches")
+    .update(updateData)
+    .eq("id", id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/admin/pelatih");
+  return { success: true };
+}
+
+export async function deleteCoach(id: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("coaches").delete().eq("id", id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/admin/pelatih");
+  return { success: true };
+}
