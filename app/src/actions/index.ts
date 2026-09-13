@@ -708,7 +708,7 @@ export async function updateCoach(id: string, formData: FormData) {
   const sort_order = parseInt((formData.get("sort_order") as string) || "0");
   const imageFile = formData.get("image") as File | null;
 
-  let updateData: any = { name, role, description, sort_order };
+  const updateData: { name: string; role: string; description: string; sort_order: number; image_url?: string } = { name, role, description, sort_order };
 
   if (imageFile && imageFile.size > 0) {
     const fileName = `${Date.now()}-${imageFile.name}`;
