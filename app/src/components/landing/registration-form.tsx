@@ -28,7 +28,7 @@ export default function RegistrationForm() {
       advance: "Advance",
     };
 
-    const message = `Halo Lorem Ipsum! Saya ingin mendaftar.
+    const message = `Halo PB Tangkis Jaya! Saya ingin mendaftar.
 
 Nama Orang Tua: ${parentName}
 No. WhatsApp: ${phone}
@@ -78,7 +78,7 @@ Terima kasih.`;
           </div>
           <div>
             <label className="block font-label-md text-primary uppercase mb-2">
-            Nomor WhatsApp
+              Nomor WhatsApp
             </label>
             <input
               className="w-full bg-surface border border-outline rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent font-body-md"

@@ -29,16 +29,16 @@ export default async function HomePage() {
         <div className="relative z-10 text-center flex flex-col items-center px-4 max-w-container-max mx-auto counter-skew">
           <div className="bg-surface rounded-full p-4 shadow-[8px_8px_0px_0px_rgba(183,16,42,1)] mb-8 transform -rotate-2">
               <img
-                alt="Lorem Ipsum Logo"
+                alt="PB Tangkis Jaya Logo"
                 className="w-32 h-32 md:w-48 md:h-48 rounded-full object-contain"
                 src="/images/logo.jpeg"
               />
           </div>
           <h1 className="font-display-lg text-display-lg text-white uppercase italic text-shadow-heavy mb-2 transform -skew-x-6">
-              LOREM IPSUM
+            PB TANGKIS JAYA
           </h1>
           <p className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary-fixed mb-8 uppercase tracking-wide bg-primary px-4 py-1 inline-block -skew-x-6 shadow-[4px_4px_0px_0px_rgba(219,49,63,1)]">
-            Dolor Sit Amet Consectetur
+            Membangun Juara dari Surakarta
           </p>
           <a
             className="bg-secondary text-on-primary font-headline-lg text-headline-lg-mobile md:text-headline-lg px-8 py-4 rounded-full uppercase tracking-wider shadow-[0px_4px_0px_0px_rgba(146,0,28,1)] hover:bg-secondary-container transition-all hover:translate-y-1 hover:shadow-none inline-flex items-center gap-2"
@@ -79,16 +79,17 @@ export default async function HomePage() {
               Tentang Kami
             </div>
             <h2 className="font-headline-xl text-headline-xl text-primary uppercase leading-tight">
-              Lorem Ipsum Dolor <br />
+              Melatih Calon Juara <br />
               <span className="text-secondary italic">
-                Sit Amet Consectetur
+                di Jantung Kota Solo
               </span>
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat.
+              Berdiri dengan semangat untuk memajukan olahraga bulutangkis di
+              Surakarta, PB Tangkis Jaya mendedikasikan diri untuk membina
+              talenta muda menjadi atlet berprestasi. Dengan pelatih profesional
+              dan fasilitas berkualitas, kami berkomitmen mencetak generasi juara
+              berikutnya.
             </p>
           </div>
         </div>
@@ -379,22 +380,22 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {[
             {
-              name: "Lorem I.",
-              role: "Dolor Sit",
+              name: "Budi S.",
+              role: "Orang Tua Murid",
               initial: "A",
-              text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."',
+              text: '"Anak saya perkembangannya sangat pesat sejak gabung PB Tangkis Jaya. Pelatihnya sabar tapi disiplin."',
             },
             {
-              name: "Amet C.",
-              role: "Adipiscing Elit",
+              name: "Rini A.",
+              role: "Atlet Junior",
               initial: "R",
-              text: '"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."',
+              text: '"Fasilitas latihannya bagus dan programnya jelas. Saya merasa lebih siap menghadapi turnamen."',
             },
             {
-              name: "Dolor S.",
-              role: "Dolor Sit",
+              name: "Dewi K.",
+              role: "Orang Tua Murid",
               initial: "D",
-              text: '"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla."',
+              text: '"Sangat merekomendasikan PB ini untuk anak-anak yang ingin serius di bulutangkis. Komunitasnya juga supportif."',
             },
           ].map((t) => (
             <div
@@ -531,10 +532,10 @@ export default async function HomePage() {
         <div className="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 gap-gutter w-full max-w-container-max mx-auto counter-skew">
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="font-headline-lg text-headline-lg text-secondary-fixed italic uppercase">
-            LOREM IPSUM
+              PB TANGKIS JAYA
             </div>
             <div className="font-body-md text-body-md text-white/80">
-              © 2024 LOREM IPSUM. ALL RIGHTS RESERVED.
+              Â© 2024 PB TANGKIS JAYA. ALL RIGHTS RESERVED.
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-body-md text-body-md">

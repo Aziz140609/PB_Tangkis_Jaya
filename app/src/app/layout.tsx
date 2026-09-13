@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LOREM IPSUM - Dolor Sit Amet Club",
+  title: "PB TANGKIS JAYA - Badminton Club Surakarta",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    "PB Tangkis Jaya - Klub bulutangkis terbaik di Surakarta. Melatih calon juara sejak berdiri.",
 };
 
 export default function RootLayout({
